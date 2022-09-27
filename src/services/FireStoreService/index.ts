@@ -1,20 +1,21 @@
 import { initializeApp } from "firebase/app";
 import {
   getFirestore,
-  // collection,
+  collection,
   // addDoc,
-  // getDocs,
+  getDocs,
   // doc,
-  // query,
-  // orderBy,
+  query,
+  orderBy,
+  FirestoreError,
 } from "firebase/firestore";
-// import type { Ride } from "../../types";
+import type { Ride, DbResponse } from "../../types";
 // import seedData from "../../../photos.json";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.FIREBASE_API_KEY,
-  authDomain: import.meta.env.FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.FIREBASE_PROJECT_ID,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
 };
 
 class FireStoreService {
@@ -26,17 +27,26 @@ class FireStoreService {
     this.db = getFirestore(this.app);
   }
 
-  // async listGalleries(): Promise<Gallery[]> {
-  //   const querySnapshot = await getDocs(collection(this.db, "galleries"));
-  //   const galleries: Gallery[] = [];
+  async getRides(year: string, type: string): Promise<DbResponse<Ride>> {
+    try {
+      const ridesColRef = collection(this.db, "rides", year, type);
+      const ridesQuery = await query(ridesColRef);
+      const rides: Ride[] = [];
+      const querySnapshot = await getDocs(ridesQuery);
 
-  //   await querySnapshot.forEach((doc) => {
-  //     const { cover, caption } = doc.data();
-  //     galleries.push({ folder: doc.id, cover, caption });
-  //   });
-  //   return galleries;
-  // }
+      await querySnapshot.forEach((doc) => {
+        rides.push(doc.data() as Ride);
+      });
+      return { data: rides };
+    } catch (error: unknown) {
+      console.error(error);
+      return error instanceof FirestoreError
+        ? { error: error.message }
+        : { error: `Unable to get rides for ${year}` };
+    }
+  }
 
+  // TODO: upsertRide(ride: Ride | RidePartial) { }
   // async addPhoto(gallery: string, photo: Photo): Promise<string> {
   //   try {
   //     const galleryRef = doc(this.db, `galleries/${gallery}`);
@@ -48,18 +58,7 @@ class FireStoreService {
   //   }
   // }
 
-  // async getPhotos(gallery: string): Promise<Photo[]> {
-  //   const galleryRef = doc(this.db, `galleries/${gallery}`);
-  //   const photosRef = collection(galleryRef, "photos");
-  //   const q = await query(photosRef, orderBy("dateTaken", "desc"));
-  //   const photos: Photo[] = [];
-
-  //   const querySnapshot = await getDocs(q);
-  //   await querySnapshot.forEach((doc) => {
-  //     photos.push(doc.data() as Photo);
-  //   });
-  //   return photos;
-  // }
+  // TODO: deleteRide(id: string) { }
 
   // async seed() {
   //   seedData.map(({ gallery, ...photo }) => {

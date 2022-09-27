@@ -1,41 +1,37 @@
-import './App.css'
+// import { useState, useEffect } from "react";
+import { useGetRides } from "./services/FireStoreService/hooks"
+import "./App.css";
+
+// TODO: Add toast for errors and confirmations
+// TODO: Setup linting and auto format
+// TODO: import Semantic UI
 
 function App() {
-  // useEffect(() => {
-  //   if (groceryListId) {
-  //     FirestoreService.getGroceryList(groceryListId)
-  //       .then(groceryList => {
-  //         if (groceryList.exists) {
-  //           setError(null);
-  //           setGroceryList(groceryList.data());
-  //         } else {
-  //           setError('grocery-list-not-found');
-  //           setGroceryListId();
-  //         }
-  //       })
-  //       .catch(() => setError('grocery-list-get-fail'));
-  //   }
-  // }, [groceryListId, setGroceryListId]);
-
-  // Streaming
-  //   useEffect(() => {
-  //     const unsubscribe = FirestoreService.streamGroceryListItems(groceryListId,
-  //         (querySnapshot) => {
-  //             const updatedGroceryItems =
-  //             querySnapshot.docs.map(docSnapshot => docSnapshot.data());
-  //             setGroceryItems(updatedGroceryItems);
-  //         },
-  //         (error) => setError('grocery-list-item-get-fail')
-  //     );
-  //     return unsubscribe;
-  // }, [groceryListId, setGroceryItems]);
+  const { data, error } = useGetRides("2022", "sunday");
 
   return (
     <div className="App">
       <h1>BCC Rides</h1>
-      <div>
-        More to come...
-      </div>
+
+      {data && data.length > 0 && (
+        <div className="ride-list">
+          {data.map(ride => (
+            <div className="ride-item" key={ride.group}>
+              <div>{ride.date}</div>
+              <div>{ride.group}</div>
+              <div>{ride.destination} {ride.distance}km</div>
+              <div>{ride.route}</div>
+              <div>{ride.leader}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {error && (
+        <div className="error-message">
+          {error}
+        </div>
+      )}
     </div>
   )
 }
