@@ -10,6 +10,7 @@ export type Ride = {
 export type RidePartial = { id: string } & Ride;
 
 export type DbResponse<T> = {
-  error?: string;
   data?: T[];
+  error?: string;
+  loading?: boolean;
 };

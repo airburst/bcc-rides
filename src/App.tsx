@@ -1,13 +1,13 @@
 // import { useState, useEffect } from "react";
-import { useGetRides } from "./services/FireStoreService/hooks"
+import { useGetRides } from "./services/FirestoreService/hooks"
 import "./App.css";
 
-// TODO: Add toast for errors and confirmations
 // TODO: Setup linting and auto format
 // TODO: import Semantic UI
+// TODO: Add toast for errors and confirmations
 
 function App() {
-  const { data, error } = useGetRides("2022", "sunday");
+  const { data, error, loading } = useGetRides("2022", "sunday");
 
   return (
     <div className="App">

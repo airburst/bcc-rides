@@ -17,8 +17,9 @@ const firebaseConfig = {
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
 };
+console.log("🚀 ~ file: index.ts ~ line 20 ~ firebaseConfig", firebaseConfig); // FIXME:
 
-class FireStoreService {
+class FirestoreService {
   app;
   db;
 
@@ -67,7 +68,7 @@ class FireStoreService {
   // }
 }
 
-export default new FireStoreService();
+export default new FirestoreService();
 
 // export const streamGroceryListItems = (groceryListId, snapshot, error) => {
 //   const itemsColRef = collection(db, 'groceryLists', groceryListId, 'items')
