@@ -1,0 +1,77 @@
+[
+  {
+    "type": "Sunday",
+    "group": "DE",
+    "destination": "Cheddar",
+    "date": "2022-10-09",
+    "distance": 112,
+    "route": "https://ridegps.com/111111",
+    "leader": "David Stoyle"
+  },
+  {
+    "type": "Sunday",
+    "group": "E",
+    "destination": "Cheddar",
+    "date": "2022-10-09",
+    "distance": 103,
+    "route": "https://ridegps.com/222222",
+    "leader": "David Oliver"
+  },
+  {
+    "type": "Sunday",
+    "group": "DSL",
+    "destination": "Cheddar",
+    "date": "2022-10-09",
+    "distance": 90,
+    "route": "https://ridegps.com/333333",
+    "leader": "Michael Duble"
+  },
+  {
+    "type": "Sunday",
+    "group": "A",
+    "destination": "Chew Magna",
+    "date": "2022-10-09",
+    "distance": 82,
+    "route": "https://ridegps.com/444444",
+    "leader": "Andy Mericano"
+  },
+  {
+    "type": "Sunday",
+    "group": "C",
+    "destination": "Cheddar",
+    "date": "2022-10-09",
+    "distance": 78,
+    "route": "https://ridegps.com/555555",
+    "leader": "Julia Stoyle"
+  },
+  {
+    "type": "Paceline",
+    "group": "UBER",
+    "date": "2022-10-08",
+    "speed": 39
+  },
+  {
+    "type": "Paceline",
+    "group": "FAST1",
+    "date": "2022-10-08",
+    "speed": 36
+  },
+  {
+    "type": "Paceline",
+    "group": "FAST2",
+    "date": "2022-10-08",
+    "speed": 34
+  },
+  {
+    "type": "Paceline",
+    "group": "Mods",
+    "date": "2022-10-08",
+    "speed": 29
+  },
+  {
+    "type": "Paceline",
+    "group": "Rockers",
+    "date": "2022-10-08",
+    "speed": 27
+  }
+]
