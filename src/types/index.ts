@@ -2,8 +2,8 @@ export type Ride = {
   id?: string;
   type: string; // Enum sunday | paceline | event
   group: string;
-  destination: string;
   date: string;
+  destination?: string;
   distance?: number;
   route?: string;
   leader?: string;

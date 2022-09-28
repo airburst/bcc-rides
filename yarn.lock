@@ -694,6 +694,11 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@planetscale/database@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@planetscale/database/-/database-1.3.0.tgz#a34e32cf54edb50190efd95be64edf279140df13"
+  integrity sha512-NtXhNxuniCajVyQrDIap8m7tVF+SNdIiUA9JSoxR8gGYWyuqasT5BzHHMxBz1sR4icWZW5XIRYZuQcX0TzzjUw==
+
 "@protobufjs/aspromise@^1.1.1", "@protobufjs/aspromise@^1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@protobufjs/aspromise/-/aspromise-1.1.2.tgz#9b8b0cc663d669a7d8f6f5d0893a14d348f30fbf"
