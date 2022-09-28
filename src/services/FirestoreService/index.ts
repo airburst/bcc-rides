@@ -17,7 +17,6 @@ const firebaseConfig = {
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
 };
-console.log("🚀 ~ file: index.ts ~ line 20 ~ firebaseConfig", firebaseConfig); // FIXME:
 
 class FirestoreService {
   app;
