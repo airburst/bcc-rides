@@ -19,20 +19,20 @@ export const useGetRides = (date: string) => {
   return { error, data, loading };
 };
 
-export const useSeedRides = () => {
-  const [error, setError] = useState<string | undefined>();
-  const [done, setDone] = useState<boolean>(false);
+// export const useSeedRides = () => {
+//   const [error, setError] = useState<string | undefined>();
+//   const [done, setDone] = useState<boolean>(false);
 
-  useEffect(() => {
-    const fetch = async () => {
-      try {
-        await FirestoreService.seed();
-        setDone(true);
-      } catch (error) {
-        setError(JSON.stringify(error));
-      }
-    };
-    fetch();
-  }, []);
-  return { error, done };
-};
+//   useEffect(() => {
+//     const fetch = async () => {
+//       try {
+//         await FirestoreService.seed();
+//         setDone(true);
+//       } catch (error) {
+//         setError(JSON.stringify(error));
+//       }
+//     };
+//     fetch();
+//   }, []);
+//   return { error, done };
+// };

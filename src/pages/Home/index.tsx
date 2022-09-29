@@ -1,6 +1,8 @@
 // import { useState, useEffect } from "react";
-import { useGetRides } from "./services/FirestoreService/hooks"
-import "./App.css";
+// import { useGetRides } from "./services/FirestoreService/hooks"
+import { useAuth0 } from "@auth0/auth0-react";
+import { LoginButton } from "../../components"
+import "./Home.css";
 
 // TODO: Setup linting and auto format
 // TODO: import Semantic UI
@@ -9,9 +11,10 @@ import "./App.css";
 // TODO: Set date as end of next week
 const nextDate = "2022-10-09";
 
-function App() {
-  const { data, error, loading } = useGetRides(nextDate);
-  const ridesFound = data && data.length > 0;
+const App = () => {
+  const { isAuthenticated } = useAuth0();
+  // const { data, error, loading } = useGetRides(nextDate);
+  // const ridesFound = data && data.length > 0;
 
   // const { error: errSeed, done } = useSeedRides();
   // console.log("🚀 ~ ", { errSeed, done })
@@ -20,7 +23,9 @@ function App() {
     <div className="App">
       <h1>BCC Rides</h1>
 
-      {ridesFound
+      {!isAuthenticated && <LoginButton />}
+
+      {/* {ridesFound
         ? (
           <div className="ride-list">
             {data.map(ride => (
@@ -46,9 +51,9 @@ function App() {
         <div className="error-message">
           {error}
         </div>
-      )}
+      )} */}
     </div>
   )
 }
 
-export default App
+export default App;
