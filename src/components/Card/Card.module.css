@@ -1,13 +1,23 @@
 .container {
   display: flex;
   flex-direction: column;
-  width: calc(100% - 16px);
-  /* max-width: 320px; */
+  width: calc(100% - 32px);
+  margin: auto;
   /* border: 1px solid var(--color-blue); */
   padding: 8px;
+  color: var(--color-text-lighter);
   border-radius: 5px;
   background-color: var(--color-card-background);
-  /*shadow*/
+  box-shadow: 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.02), 22.3px 22.3px 17.9px rgba(0, 0, 0, 0.03),
+    100px 100px 80px rgba(0, 0, 0, 0.05);
+  transition: all 0.1s;
+}
+
+.container:hover {
+  color: var(--color-text-mid);
+  width: calc(100% - 16px);
+  box-shadow: 4.5px 4.5px 5px rgba(0, 0, 0, 0.017), 12.5px 12.5px 13.8px rgba(0, 0, 0, 0.025),
+    30.1px 30.1px 33.2px rgba(0, 0, 0, 0.033), 100px 100px 110px rgba(0, 0, 0, 0.05);
 }
 
 /* @media (min-width: 620px) {

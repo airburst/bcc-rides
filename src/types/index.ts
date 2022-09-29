@@ -1,3 +1,9 @@
+export type DbResponse<T> = {
+  data?: T[];
+  error?: string;
+  loading?: boolean;
+};
+
 export type Ride = {
   id?: string;
   type: string; // Enum sunday | paceline | event
@@ -8,10 +14,4 @@ export type Ride = {
   route?: string;
   leader?: string;
   speed?: string;
-};
-
-export type DbResponse<T> = {
-  data?: T[];
-  error?: string;
-  loading?: boolean;
 };

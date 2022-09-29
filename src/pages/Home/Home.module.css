@@ -13,6 +13,6 @@
 @media (min-width: 920px) {
   .grid {
     /* grid-template-columns: 1fr 1fr; */
-    max-width: 620px;
+    max-width: var(--max-width);
   }
 }
