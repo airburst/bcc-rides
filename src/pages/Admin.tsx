@@ -9,12 +9,13 @@ const UserProfile = () => {
 
   return (
     <>
-      <h1>Admin Page</h1>
       {isAuthenticated && (
         <div>
           <h2>{user?.nickname}</h2>
           <p>{user?.email}</p>
-        </div>)}
+          <p>TODO: Add actions and a view of rides that have been added</p>
+        </div>
+      )}
     </>
   );
 };

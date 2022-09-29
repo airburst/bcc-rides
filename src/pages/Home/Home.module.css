@@ -1,0 +1,18 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  width: 100%;
+}
+
+.rideList {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 920px) {
+  .grid {
+    /* grid-template-columns: 1fr 1fr; */
+    max-width: 620px;
+  }
+}

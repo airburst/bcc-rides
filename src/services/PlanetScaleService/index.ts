@@ -6,9 +6,6 @@ const config = {
   password: import.meta.env.VITE_DATABASE_PASSWORD,
 };
 
-const getNextRidesSql =
-  "SELECT * FROM rides WHERE date <= ? ORDER BY date, distance desc";
-
 class PlanetScaleService {
   conn;
 
@@ -28,7 +25,10 @@ class PlanetScaleService {
 
   // Queries
   getNextRides(date: string) {
-    return this.fetch(getNextRidesSql, date);
+    return this.fetch(
+      "SELECT * FROM rides WHERE date <= ? ORDER BY date, distance desc",
+      date
+    );
   }
 }
 

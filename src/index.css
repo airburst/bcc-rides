@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,200;0,300;0,400;0,500;0,700;1,200;1,300;1,400;1,500&display=swap');
+
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Prompt', Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -9,12 +11,31 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --color-blue: #00157b;
+  --color-maroon: #8c1a19;
+  --color-text: #262626;
+  --color-text-lighter: #464646;
+  --color-border-light: #f6f6f6;
+  --color-background: #f6f6f6;
+  --color-card-background: white;
+
+  --max-width: 1280px;
+  --font-family: 'Prompt';
 }
 
 body {
   margin: 0;
   display: flex;
   min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--color-background);
+}
+
+#root {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 h1 {
