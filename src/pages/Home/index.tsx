@@ -1,5 +1,5 @@
-// import { useState, useEffect } from "react";
-// import { useGetRides } from "./services/FirestoreService/hooks"
+import { useState, useEffect } from "react";
+import { useGetRides } from "../../services/PlanetScaleService/hooks"
 import { useAuth0 } from "@auth0/auth0-react";
 import { LoginButton } from "../../components"
 import "./Home.css";
@@ -9,12 +9,12 @@ import "./Home.css";
 // TODO: Add toast for errors and confirmations
 
 // TODO: Set date as end of next week
-const nextDate = "2022-10-09";
+const nextDate = "2022-10-09 23:59:59";
 
 const App = () => {
   const { isAuthenticated } = useAuth0();
-  // const { data, error, loading } = useGetRides(nextDate);
-  // const ridesFound = data && data.length > 0;
+  const { data, error, loading } = useGetRides(nextDate);
+  const ridesFound = data && data.length > 0;
 
   // const { error: errSeed, done } = useSeedRides();
   // console.log("🚀 ~ ", { errSeed, done })
@@ -25,7 +25,7 @@ const App = () => {
 
       {!isAuthenticated && <LoginButton />}
 
-      {/* {ridesFound
+      {ridesFound
         ? (
           <div className="ride-list">
             {data.map(ride => (
@@ -51,7 +51,7 @@ const App = () => {
         <div className="error-message">
           {error}
         </div>
-      )} */}
+      )}
     </div>
   )
 }

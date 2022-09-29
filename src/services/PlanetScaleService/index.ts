@@ -6,6 +6,9 @@ const config = {
   password: import.meta.env.VITE_DATABASE_PASSWORD,
 };
 
+const getNextRidesSql =
+  "SELECT * FROM rides WHERE date <= ? ORDER BY date, distance desc";
+
 class PlanetScaleService {
   conn;
 
@@ -13,16 +16,19 @@ class PlanetScaleService {
     this.conn = connect(config);
   }
 
-  async runSql(rawSql: string, params?: any) {
-    const results = await this.conn.execute(rawSql, [params]);
-    return results;
+  async fetch(rawSql: string, ...params: any[]) {
+    try {
+      const results = await this.conn.execute(rawSql, params);
+      return { data: results?.rows };
+    } catch (e: any) {
+      console.error(e);
+      return { error: e.message as string };
+    }
   }
 
-  async test() {
-    const results = await this.conn.execute("select 1 from dual where 1=?", [
-      1,
-    ]);
-    return results;
+  // Queries
+  getNextRides(date: string) {
+    return this.fetch(getNextRidesSql, date);
   }
 }
 
