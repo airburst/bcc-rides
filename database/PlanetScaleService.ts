@@ -1,9 +1,15 @@
+import "dotenv/config";
 import { connect } from "@planetscale/database";
 
+/**
+ * This is a slim version of the larger class in src/services
+ * Node requires process.env instead of vite variables and
+ * only needs to run raw SQL.
+ */
 const config = {
-  host: import.meta.env.VITE_DATABASE_HOST,
-  username: import.meta.env.VITE_DATABASE_USERNAME,
-  password: import.meta.env.VITE_DATABASE_PASSWORD,
+  host: process.env.VITE_DATABASE_HOST,
+  username: process.env.VITE_DATABASE_USERNAME,
+  password: process.env.VITE_DATABASE_PASSWORD,
 };
 
 class PlanetScaleService {
@@ -15,13 +21,6 @@ class PlanetScaleService {
 
   async runSql(rawSql: string, params?: any) {
     const results = await this.conn.execute(rawSql, [params]);
-    return results;
-  }
-
-  async test() {
-    const results = await this.conn.execute("select 1 from dual where 1=?", [
-      1,
-    ]);
     return results;
   }
 }

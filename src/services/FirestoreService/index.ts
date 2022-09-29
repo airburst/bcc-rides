@@ -12,7 +12,7 @@ import {
   where,
 } from "firebase/firestore";
 import type { Ride, DbResponse } from "../../types";
-import seedRidesData from "../../seedRides.json";
+// import seedRidesData from "../../seedRides.json";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -82,11 +82,11 @@ class FirestoreService {
 
   // TODO: deleteRide(id: string) { }
 
-  async seed() {
-    seedRidesData.map((ride) => {
-      this.upsertRide(ride as Ride);
-    });
-  }
+  // async seed() {
+  //   seedRidesData.map((ride) => {
+  //     this.upsertRide(ride as Ride);
+  //   });
+  // }
 }
 
 export default new FirestoreService();
