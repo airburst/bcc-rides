@@ -11,7 +11,7 @@ export const useGetRides = (date: string) => {
     const fetch = async () => {
       const { data, error } = await PlanetScaleService.getNextRides(date);
       if (error) setError(error);
-      setData(data);
+      setData(data as Ride[]);
       setLoading(false);
     };
     fetch();
