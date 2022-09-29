@@ -1,9 +1,9 @@
-import { createUsers } from "./users";
+import { createRides } from "./rides";
 
 // Create database schema and seed
 (async () => {
   try {
-    await createUsers();
+    await createRides();
   } catch (err) {
     console.error(err);
   }

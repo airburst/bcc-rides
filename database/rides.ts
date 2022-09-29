@@ -1,43 +1,36 @@
 import DbService from "./PlanetScaleService";
-// Create database schema and seed
+import ridesData from "./seedRides.json" assert { type: "json" };
 
-const dropUsersSql = `DROP TABLE IF EXISTS users`;
+const dropRidesSql = `DROP TABLE IF EXISTS rides`;
 
-const createUsersSql = `CREATE TABLE users (
+const createRidesSql = `CREATE TABLE rides (
   id SERIAL NOT NULL,
-  first_name VARCHAR(255) NOT NULL,
-  last_name VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL,
-  password VARCHAR(255) NOT NULL,
+  type VARCHAR(255) NOT NULL,
+  ride_group VARCHAR(255) NOT NULL,
+  date DATETIME NOT NULL,
+  destination VARCHAR(255),
+  distance INT,
+  route VARCHAR(255),
+  speed INT,
+  leader VARCHAR(255),
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-  CONSTRAINT user_pkey PRIMARY KEY (id)
+  CONSTRAINT rides_pkey PRIMARY KEY (id)
 )`;
 
-const seedUsers = [
-  {
-    firstName: "Mark",
-    lastName: "Fairhurst",
-    email: "mark@fairhursts.net",
-    password: "password",
-  },
-  {
-    firstName: "David",
-    lastName: "Stoyle",
-    email: "d@test.com",
-    password: "password",
-  },
-];
+const seedRidesSql = ridesData.map((ride) => {
+  const fields = Object.keys(ride).join(",").replace("rideGroup", "ride_group");
+  // Wrap strings in quotes
+  const values = Object.values(ride)
+    .map((field) => (typeof field === "string" ? `'${field}'` : field))
+    .join(",");
 
-const seedUsersSql = seedUsers.map(
-  ({ firstName, lastName, email, password }) => `INSERT INTO users
-(first_name, last_name, email, password)
-VALUES ('${firstName}','${lastName}','${email}','${password}')`
-);
+  return `INSERT INTO rides (${fields}) VALUES (${values})`;
+});
 
-export const createUsers = async () => {
-  await DbService.runSql(dropUsersSql);
-  await DbService.runSql(createUsersSql);
-  await seedUsersSql.map((seedUser) => DbService.runSql(seedUser));
+export const createRides = async () => {
+  await DbService.runSql(dropRidesSql);
+  await DbService.runSql(createRidesSql);
+  await seedRidesSql.map((seedUser) => DbService.runSql(seedUser));
 };
