@@ -1,77 +1,77 @@
 [
   {
     "type": "Sunday",
-    "group": "DE",
+    "rideGroup": "DE",
     "destination": "Cheddar",
-    "date": "2022-10-09",
+    "date": "2022-10-09 08:30:00",
     "distance": 112,
     "route": "https://ridegps.com/111111",
     "leader": "David Stoyle"
   },
   {
     "type": "Sunday",
-    "group": "E",
+    "rideGroup": "E",
     "destination": "Cheddar",
-    "date": "2022-10-09",
+    "date": "2022-10-09 08:30:00",
     "distance": 103,
     "route": "https://ridegps.com/222222",
     "leader": "David Oliver"
   },
   {
     "type": "Sunday",
-    "group": "DSL",
+    "rideGroup": "DSL",
     "destination": "Cheddar",
-    "date": "2022-10-09",
+    "date": "2022-10-09 08:30:00",
     "distance": 90,
     "route": "https://ridegps.com/333333",
     "leader": "Michael Duble"
   },
   {
     "type": "Sunday",
-    "group": "A",
+    "rideGroup": "A",
     "destination": "Chew Magna",
-    "date": "2022-10-09",
+    "date": "2022-10-09 08:30:00",
     "distance": 82,
     "route": "https://ridegps.com/444444",
     "leader": "Andy Mericano"
   },
   {
     "type": "Sunday",
-    "group": "C",
+    "rideGroup": "C",
     "destination": "Cheddar",
-    "date": "2022-10-09",
+    "date": "2022-10-09 08:30:00",
     "distance": 78,
     "route": "https://ridegps.com/555555",
     "leader": "Julia Stoyle"
   },
   {
     "type": "Paceline",
-    "group": "UBER",
-    "date": "2022-10-08",
+    "rideGroup": "UBER",
+    "date": "2022-10-08 09:00:00",
     "speed": 39
   },
   {
     "type": "Paceline",
-    "group": "FAST1",
-    "date": "2022-10-08",
+    "rideGroup": "FAST1",
+    "date": "2022-10-08 09:00:00",
     "speed": 36
   },
   {
     "type": "Paceline",
-    "group": "FAST2",
-    "date": "2022-10-08",
+    "rideGroup": "FAST2",
+    "date": "2022-10-08 09:00:00",
     "speed": 34
   },
   {
     "type": "Paceline",
-    "group": "Mods",
-    "date": "2022-10-08",
+    "rideGroup": "Mods",
+    "date": "2022-10-08 09:00:00",
     "speed": 29
   },
   {
     "type": "Paceline",
-    "group": "Rockers",
-    "date": "2022-10-08",
+    "rideGroup": "Rockers",
+    "date": "2022-10-08 09:00:00",
     "speed": 27
   }
 ]
