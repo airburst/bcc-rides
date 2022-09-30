@@ -2,18 +2,21 @@
 
 ## Pages
 
-- View rides (home page)
-- Card for each type of ride
+- Details Card for each type of ride
+- view of who is going
+- Join ride / unjoin ride (user can only add/remove themselves)
+- remember user name (localStorage)
+
+## Admin/Leader
 
 - Add / edit ride form
 - delete ride
-- Join ride / unjoin ride (user can only add/remove themselves)
-- view of who is going
-- remember user name (localSrtorage)
-- Loading spinners
+- View of rides on calendar
 
 ## Engineering
 
 - Sort out linting and auto formating
 - precommit hooks (test, check-types, lint)
 - Toast library
+- Add PWA manifest
+- add long expiry to js,css,image assets on FB host
