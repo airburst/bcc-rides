@@ -9,8 +9,6 @@ type Props = {
   onPress: (ride: Ride) => void;
 }
 
-alert("🚀 ~ isMobile: " + isMobile())
-
 /**
  * All ride instances share common date and type
  */
