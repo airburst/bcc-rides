@@ -10,7 +10,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  position: absolute;
+  position: fixed;
 }
 
 .centered {
@@ -23,8 +23,8 @@
 .modal {
   display: flex;
   flex-direction: column;
-  width: calc(100vw - 32px);
-  height: 600px;
+  width: 100vw;
+  height: 100vh;
   background: white;
   color: white;
   z-index: 10;
@@ -127,7 +127,7 @@
 @media (min-width: 620px) {
   .modal {
     width: 600px;
-    /* height: 400px; */
+    height: 600px;
   }
 }
 

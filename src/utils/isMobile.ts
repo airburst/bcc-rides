@@ -24,7 +24,8 @@ const detectBrowser = () => {
 };
 
 export const isMobile = () => {
-  const browser = detectBrowser();
+  // const browser = detectBrowser();
 
-  return ['iPhone', 'Android'].includes(browser);
+  // return ['iPhone', 'Android'].includes(browser);
+  return window.matchMedia('only screen and (max-width: 480px)').matches;
 };
