@@ -11,7 +11,7 @@ const App = () => {
 
   if (loading) {
     return (
-      <Loading />
+      <Loading text="Fetching rides..." />
     )
   }
 
