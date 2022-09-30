@@ -10,6 +10,7 @@ type Props = {
 
 // @ts-ignore
 const isMobile = navigator?.userAgentData?.mobile;
+alert("🚀 ~ isMobile: " + isMobile)
 
 /**
  * All ride instances share common date and type
