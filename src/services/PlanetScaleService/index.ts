@@ -33,6 +33,10 @@ class PlanetScaleService {
   getNextRides(date: string) {
     return this.fetch(getNextRidesSql, date);
   }
+
+  getRidersForRide(rideId: string) {
+    return this.fetch('select name, mobile from riders where ride_id = ?', rideId);
+  }
 }
 
 export default new PlanetScaleService();

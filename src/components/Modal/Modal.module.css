@@ -64,25 +64,29 @@
 }
 
 .actionsContainer {
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 20px);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
+  background-color: white;
+  border-bottom-left-radius: var(--corner-radius);
+  border-bottom-right-radius: var(--corner-radius);
+  /* border-top: 1px solid var(--color-text-lighter); */
 }
 
 .closeBtn {
   height: 24px;
   cursor: pointer;
   font-weight: 500;
-  padding: 4px 8px;
   border-radius: 5px;
   border: none;
   color: var(--color-text);
+  font-size: 1.4em;
   background: white;
   transition: all 0.2s;
-  margin-top: -6px;
-  margin-right: -7px;
-  font-size: 1.4em;
 }
 
 .closeBtn:hover {
@@ -144,6 +148,22 @@
   justify-content: space-between;
   font-weight: 500;
   padding: 10px;
+}
+
+.riderRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-bottom: 1px solid var(--color-background);
+}
+
+.phone {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .going {

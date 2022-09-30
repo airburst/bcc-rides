@@ -9,7 +9,7 @@
 }
 
 .spinner {
-  font-size: 5em;
+  font-size: 2em;
   color: var(--color-text-lighter);
   padding-bottom: 64px;
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import PlanetScaleService from './index';
-import { Ride } from '../../types';
+import { Ride, Riders } from '../../types';
 
 const changeKeyCase = (data: Record<string, any>[]): Ride[] => {
   return data.map((item) => {
@@ -28,6 +28,23 @@ export const useGetRides = (date: string) => {
       // Transform ride_group to rideGroup
       const cleanData = changeKeyCase(data!);
       setData(cleanData as Ride[]);
+      setLoading(false);
+    };
+    fetch();
+  }, []);
+  return { error, data, loading };
+};
+
+export const useGetRiders = (rideId: string) => {
+  const [data, setData] = useState<Riders[] | undefined>([]);
+  const [error, setError] = useState<string | undefined>();
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetch = async () => {
+      const { data, error } = await PlanetScaleService.getRidersForRide(rideId);
+      if (error) setError(error);
+      setData(data as Riders[]);
       setLoading(false);
     };
     fetch();

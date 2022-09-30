@@ -17,6 +17,11 @@ export type Ride = {
   riderCount?: number;
 };
 
+export type Riders = {
+  name: string;
+  mobile?: string;
+};
+
 export type Group = {
   [date: string]: {
     [title: string]: Ride[];
