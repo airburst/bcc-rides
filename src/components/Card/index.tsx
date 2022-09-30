@@ -1,6 +1,7 @@
 import { useLongPress } from 'use-long-press';
 import { Badge } from "../../components";
 import { Ride } from "../../types";
+import { isMobile } from "../../utils";
 import styles from "./Card.module.css";
 
 type Props = {
@@ -8,9 +9,7 @@ type Props = {
   onPress: (ride: Ride) => void;
 }
 
-// @ts-ignore
-const isMobile = navigator?.userAgentData?.mobile;
-alert("🚀 ~ isMobile: " + isMobile)
+alert("🚀 ~ isMobile: " + isMobile())
 
 /**
  * All ride instances share common date and type
@@ -20,7 +19,7 @@ export const Card: React.FC<Props> = ({ ride, onPress }) => {
   const details = destination ? `${destination} - ${distance} km` : `${distance} km`;
 
   const pressHandler = useLongPress(() => onPress(ride), {
-    threshold: isMobile ? 500 : 0,
+    threshold: isMobile() ? 500 : 0,
     cancelOnMovement: true,
   });
 
