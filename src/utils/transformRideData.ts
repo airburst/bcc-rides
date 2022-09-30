@@ -1,37 +1,19 @@
 import { formatDate } from '../utils';
-import { Ride } from '../types';
+import { Ride, Group } from '../types';
 
-type Group = {
-  [type: string]: Ride[];
-};
-
-type GroupedData = {
-  [date: string]: Group;
-}[];
-
-/**
- * Transform data from structure Ride[] to
- *
- * [{
- *   date: {
- *     type: [
- *       Ride
- *     ]
- *   }
- * }]
- */
-const groupByType = (data: Ride[]): Group => {
+const groupByType = (data: Ride[]) => {
   // Group rides by date, then type
-  const groupedByType: Group = {};
+  const groupedByTitle: { [index: string]: any } = {};
 
   for (const ride of data) {
-    groupedByType[ride.type] = groupedByType[ride.type] || [];
-    groupedByType[ride.type].push(ride);
+    groupedByTitle[ride.title] = groupedByTitle[ride.title] || [];
+    groupedByTitle[ride.title].push(ride);
   }
-  return groupedByType;
+
+  return groupedByTitle;
 };
 
-export const transformRideData = (data: Ride[]): GroupedData => {
+export const groupRides = (data: Ride[]): Group[] => {
   // Group rides by date
   const groupedByDate: { [key: string]: Ride[] } = {};
 
@@ -48,3 +30,8 @@ export const transformRideData = (data: Ride[]): GroupedData => {
     [date]: groupByType(rides),
   }));
 };
+
+export const ungroupRides = (group: Group) =>
+  Object.entries(group).flatMap(([date, types]) =>
+    Object.entries(types).map(([type, rides]) => ({ date, type, rides })),
+  );

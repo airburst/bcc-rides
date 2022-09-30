@@ -1,10 +1,16 @@
-import { connect } from "@planetscale/database";
+import { connect } from '@planetscale/database';
 
 const config = {
   host: import.meta.env.VITE_DATABASE_HOST,
   username: import.meta.env.VITE_DATABASE_USERNAME,
   password: import.meta.env.VITE_DATABASE_PASSWORD,
 };
+
+const getNextRidesSql = `SELECT r.*,
+(SELECT COUNT(*) FROM riders rs WHERE rs.ride_id = r.id) AS riderCount
+FROM rides r
+WHERE date <= ?
+ORDER BY date, distance desc, ride_group`;
 
 class PlanetScaleService {
   conn;
@@ -25,10 +31,7 @@ class PlanetScaleService {
 
   // Queries
   getNextRides(date: string) {
-    return this.fetch(
-      "SELECT * FROM rides WHERE date <= ? ORDER BY date, distance desc",
-      date
-    );
+    return this.fetch(getNextRidesSql, date);
   }
 }
 

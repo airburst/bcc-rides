@@ -6,12 +6,19 @@ export type DbResponse<T> = {
 
 export type Ride = {
   id?: string;
-  type: string; // Enum sunday | paceline | event
-  group: string;
+  title: string; // Enum sunday | paceline | event
+  rideGroup: string;
   date: string;
   destination?: string;
   distance?: number;
   route?: string;
   leader?: string;
   speed?: string;
+  riderCount?: number;
+};
+
+export type Group = {
+  [date: string]: {
+    [title: string]: Ride[];
+  };
 };
