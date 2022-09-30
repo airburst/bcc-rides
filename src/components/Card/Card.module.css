@@ -20,6 +20,21 @@
     30.1px 30.1px 33.2px rgba(0, 0, 0, 0.033), 100px 100px 110px rgba(0, 0, 0, 0.05);
 }
 
+.title {
+  align-self: flex-start;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-bottom: 8px;
+}
+
+.badges {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row;
+  gap: 4px;
+}
+
 /* @media (min-width: 620px) {
   .container {
     flex-direction: row;

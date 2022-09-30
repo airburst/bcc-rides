@@ -1,11 +1,11 @@
-import DbService from "./PlanetScaleService";
-import ridesData from "./seedRides.json" assert { type: "json" };
+import DbService from './PlanetScaleService';
+import ridesData from './seedRides.json' assert { type: 'json' };
 
 const dropRidesSql = `DROP TABLE IF EXISTS rides`;
 
 const createRidesSql = `CREATE TABLE rides (
   id SERIAL NOT NULL,
-  type VARCHAR(255) NOT NULL,
+  title VARCHAR(255) NOT NULL,
   ride_group VARCHAR(255) NOT NULL,
   date DATETIME NOT NULL,
   destination VARCHAR(255),
@@ -20,11 +20,11 @@ const createRidesSql = `CREATE TABLE rides (
 )`;
 
 const seedRidesSql = ridesData.map((ride) => {
-  const fields = Object.keys(ride).join(",").replace("rideGroup", "ride_group");
+  const fields = Object.keys(ride).join(',').replace('rideGroup', 'ride_group');
   // Wrap strings in quotes
   const values = Object.values(ride)
-    .map((field) => (typeof field === "string" ? `'${field}'` : field))
-    .join(",");
+    .map((field) => (typeof field === 'string' ? `'${field}'` : field))
+    .join(',');
 
   return `INSERT INTO rides (${fields}) VALUES (${values})`;
 });

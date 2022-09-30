@@ -6,8 +6,8 @@ export type DbResponse<T> = {
 
 export type Ride = {
   id?: string;
-  type: string; // Enum sunday | paceline | event
-  group: string;
+  title: string; // Enum sunday | paceline | event
+  rideGroup: string;
   date: string;
   destination?: string;
   distance?: number;
@@ -16,10 +16,19 @@ export type Ride = {
   speed?: string;
 };
 
+// export type Group = {
+//   title?: string;
+//   rides?: Ride[];
+// };
+
 export type Group = {
-  [type: string]: Ride[];
+  [date: string]: {
+    [title: string]: Ride[];
+  };
 };
 
-export type GroupedData = {
-  [date: string]: Group;
-}[];
+// export type GroupedData = {
+//   date?: string;
+//   types?: Group[];
+//   // [date: string]: Group;
+// }[];

@@ -1,4 +1,4 @@
-import { createRides } from "./rides";
+import { createRides } from './rides';
 
 // Create database schema and seed
 (async () => {

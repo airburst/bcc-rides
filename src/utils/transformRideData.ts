@@ -1,19 +1,19 @@
 import { formatDate } from '../utils';
-import { Ride, Group, GroupedData } from '../types';
+import { Ride, Group } from '../types';
 
-const groupByType = (data: Ride[]): Group => {
+const groupByType = (data: Ride[]) => {
   // Group rides by date, then type
-  const groupedByType: Group = {};
+  const groupedByTitle: { [index: string]: any } = {};
 
   for (const ride of data) {
-    groupedByType[ride.type] = groupedByType[ride.type] || [];
-    groupedByType[ride.type].push(ride);
+    groupedByTitle[ride.title] = groupedByTitle[ride.title] || [];
+    groupedByTitle[ride.title].push(ride);
   }
 
-  return groupedByType;
+  return groupedByTitle;
 };
 
-export const groupRides = (data: Ride[]): GroupedData => {
+export const groupRides = (data: Ride[]): Group[] => {
   // Group rides by date
   const groupedByDate: { [key: string]: Ride[] } = {};
 
