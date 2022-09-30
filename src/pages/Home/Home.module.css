@@ -1,7 +1,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 16px;
   width: 100%;
   height: 100%;
 }
@@ -10,7 +10,6 @@
   display: flex;
   align-items: center;
   height: 100%;
-  /* justify-content: center; */
   font-size: 2em;
   line-height: 1.4em;
   color: var(--color-text-lighter);
@@ -18,7 +17,6 @@
 
 @media (min-width: 920px) {
   .grid {
-    /* grid-template-columns: 1fr 1fr; */
     max-width: var(--max-width);
     gap: 32px;
   }

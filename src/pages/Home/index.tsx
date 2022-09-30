@@ -31,8 +31,8 @@ const App = () => {
       {ridesFound
         ? (
           <>
-            {groupedRides.map((group) => (
-              <RideGroup group={group} />
+            {groupedRides.map((group, index) => (
+              <RideGroup key={`group-${index}`} group={group} />
             ))}
           </>
         )

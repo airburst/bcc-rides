@@ -3,7 +3,6 @@
   flex-direction: column;
   width: calc(100% - 32px);
   margin: auto;
-  /* border: 1px solid var(--color-blue); */
   padding: 8px;
   color: var(--color-text-lighter);
   border-radius: var(--radius);
