@@ -10,7 +10,7 @@ const getNextRidesSql = `SELECT r.*,
 (SELECT COUNT(*) FROM riders rs WHERE rs.ride_id = r.id) AS riderCount
 FROM rides r
 WHERE date <= ?
-ORDER BY date, distance desc`;
+ORDER BY date, distance desc, ride_group`;
 
 class PlanetScaleService {
   conn;

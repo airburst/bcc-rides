@@ -11,14 +11,14 @@ type Props = {
 export const RideGroup: React.FC<Props> = ({ group }) => {
   const rideData = ungroupRides(group);
   const date = rideData.map(({ date }) => date)[0];
-  const types = rideData.map(({ type, rides }) => ({ type, rides }));
+  const types = rideData.map(({ rides }) => ({ rides }));
 
   return (
     <>
       <div className={styles.container}>
         <div>{date}</div>
       </div>
-      {types.map(({ type, rides }) => rides.map(ride => (
+      {types.map(({ rides }) => rides.map(ride => (
         <Card key={ride.id} ride={ride} />
       )))}
     </>
