@@ -1,15 +1,13 @@
 import { useGetRides } from "../../services/PlanetScaleService/hooks";
-import { Card, Loading } from "../../components";
-import { getNextWeek, transformRideData } from "../../utils"
+import { RideGroup, Loading } from "../../components";
+import { getNextWeek, groupRides, formatDate } from "../../utils"
 import styles from "./Home.module.css";
 
-const realNextDate = getNextWeek();
-console.log("🚀 ~ realNextDate", realNextDate)
-const nextDate = "2022-10-09 23:59:59"; // FIXME:
+let nextDate = getNextWeek();
+nextDate = "2022-10-09 23:59:59"; // FIXME:
 
 const App = () => {
   const { data, error, loading } = useGetRides(nextDate);
-  const ridesFound = data && data.length > 0;
 
   if (loading) {
     return (
@@ -17,7 +15,7 @@ const App = () => {
     )
   }
 
-  if (error || !ridesFound) {
+  if (error) {
     return (
       <div className="error-message">
         {error}
@@ -25,27 +23,26 @@ const App = () => {
     )
   }
 
-  const groupedRides = transformRideData(data!);
-  console.log("🚀 ~ file: index.tsx ~ line 15 ~ App ~ groupedRides", groupedRides)
+  const groupedRides = groupRides(data!);
+  const ridesFound = groupedRides.length > 0;
 
   return (
     <div className={styles.grid}>
       {ridesFound
         ? (
           <>
-            {data.map(ride => (
-              <Card key={ride.id} {...ride} />
+            {groupedRides.map((group) => (
+              <RideGroup group={group} />
             ))}
           </>
         )
         : (
-          <div className={styles.rideList}>
-            No upcoming rides before {nextDate}
+          <div className={styles.noRides}>
+            No planned rides before{' '}
+            {formatDate(nextDate)}
           </div>
         )
       }
-
-
     </div>
   )
 }

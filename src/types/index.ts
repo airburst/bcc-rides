@@ -15,3 +15,11 @@ export type Ride = {
   leader?: string;
   speed?: string;
 };
+
+export type Group = {
+  [type: string]: Ride[];
+};
+
+export type GroupedData = {
+  [date: string]: Group;
+}[];
