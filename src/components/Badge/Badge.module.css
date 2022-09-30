@@ -3,6 +3,6 @@
   color: white;
   font-size: 0.8em;
   font-weight: 500;
-  border-radius: 8px;
+  border-radius: var(--radius);
   padding: 0 8px;
 }

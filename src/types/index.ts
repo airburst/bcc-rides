@@ -14,21 +14,11 @@ export type Ride = {
   route?: string;
   leader?: string;
   speed?: string;
+  riderCount?: number;
 };
-
-// export type Group = {
-//   title?: string;
-//   rides?: Ride[];
-// };
 
 export type Group = {
   [date: string]: {
     [title: string]: Ride[];
   };
 };
-
-// export type GroupedData = {
-//   date?: string;
-//   types?: Group[];
-//   // [date: string]: Group;
-// }[];

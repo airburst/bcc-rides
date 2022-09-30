@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "../../components";
 import { ungroupRides } from "../../utils"
-import { Ride, Group } from "../../types"
+import { Group } from "../../types"
 import styles from "./RideGroup.module.css";
 
 type Props = {
@@ -18,9 +18,9 @@ export const RideGroup: React.FC<Props> = ({ group }) => {
       <div className={styles.container}>
         <div>{date}</div>
       </div>
-      {types.map(({ type, rides }) => (
-        <Card key={type} rides={rides} />
-      ))}
+      {types.map(({ type, rides }) => rides.map(ride => (
+        <Card key={ride.id} ride={ride} />
+      )))}
     </>
   );
 };

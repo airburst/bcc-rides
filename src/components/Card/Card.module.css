@@ -6,7 +6,7 @@
   /* border: 1px solid var(--color-blue); */
   padding: 8px;
   color: var(--color-text-lighter);
-  border-radius: 5px;
+  border-radius: var(--radius);
   background-color: var(--color-card-background);
   box-shadow: 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.02), 22.3px 22.3px 17.9px rgba(0, 0, 0, 0.03),
     100px 100px 80px rgba(0, 0, 0, 0.05);
@@ -25,6 +25,32 @@
   font-weight: 700;
   text-transform: uppercase;
   padding-bottom: 8px;
+}
+
+.info {
+  align-self: flex-start;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.riders {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  gap: 8px;
+}
+
+.count {
+  font-size: 1.4em;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 4px;
 }
 
 .badges {

@@ -1,27 +1,34 @@
 import React from "react";
+import { Badge } from "../../components";
 import { Ride } from "../../types";
-import { Badge } from "../Badge";
 import styles from "./Card.module.css";
 
 type Props = {
-  rides: Ride[];
+  ride: Ride;
 }
+
 /**
  * All ride instances share common date and type
  */
-export const Card: React.FC<Props> = ({ rides }) => {
-  const { title } = rides[0];
-  const badges = rides.map(({ id, rideGroup }) => ({ id, rideGroup }));
+export const Card: React.FC<Props> = ({ ride }) => {
+  const { title, rideGroup, riderCount, destination, distance } = ride;
 
-  badges.sort((a, b) => (a.rideGroup > b.rideGroup) ? 1 : -1)
+  const details = destination ? `${destination} - ${distance} km` : `${distance} km`;
 
   return (
     <div className={styles.container}>
-      <div className={styles.title}>{title}</div>
-      <div className={styles.badges}>
-        {badges.map(badge => (
-          <Badge key={badge.id} text={badge.rideGroup} />
-        ))}
+      <div className={styles.row}>
+        <div className={styles.title}>{title}</div>
+        <Badge text={rideGroup} />
+      </div>
+      <div className={styles.row}>
+        <div className={styles.info}>
+          <div className={styles.riders}>
+            <i className="fa-solid fa-person-biking"></i>
+            <span className={styles.count}>{riderCount}</span>
+          </div>
+        </div>
+        <div>{details}</div>
       </div>
     </div>
   );

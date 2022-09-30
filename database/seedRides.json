@@ -1,6 +1,6 @@
 [
   {
-    "title": "Sunday",
+    "title": "Sunday Ride",
     "rideGroup": "DE",
     "destination": "Cheddar",
     "date": "2022-10-09 08:30:00",
@@ -9,7 +9,7 @@
     "leader": "David Stoyle"
   },
   {
-    "title": "Sunday",
+    "title": "Sunday Ride",
     "rideGroup": "E",
     "destination": "Cheddar",
     "date": "2022-10-09 08:30:00",
@@ -18,7 +18,7 @@
     "leader": "David Oliver"
   },
   {
-    "title": "Sunday",
+    "title": "Sunday Ride",
     "rideGroup": "DSL",
     "destination": "Cheddar",
     "date": "2022-10-09 08:30:00",
@@ -27,7 +27,7 @@
     "leader": "Michael Duble"
   },
   {
-    "title": "Sunday",
+    "title": "Sunday Ride",
     "rideGroup": "A",
     "destination": "Chew Magna",
     "date": "2022-10-09 08:30:00",
@@ -36,7 +36,7 @@
     "leader": "Andy Mericano"
   },
   {
-    "title": "Sunday",
+    "title": "Sunday Ride",
     "rideGroup": "C",
     "destination": "Cheddar",
     "date": "2022-10-09 08:30:00",
@@ -48,30 +48,35 @@
     "title": "Paceline",
     "rideGroup": "UBER",
     "date": "2022-10-08 09:00:00",
+    "distance": 70,
     "speed": 39
   },
   {
     "title": "Paceline",
     "rideGroup": "FAST1",
     "date": "2022-10-08 09:00:00",
+    "distance": 70,
     "speed": 36
   },
   {
     "title": "Paceline",
     "rideGroup": "FAST2",
     "date": "2022-10-08 09:00:00",
+    "distance": 70,
     "speed": 34
   },
   {
     "title": "Paceline",
     "rideGroup": "Mods",
     "date": "2022-10-08 09:00:00",
+    "distance": 70,
     "speed": 29
   },
   {
     "title": "Paceline",
     "rideGroup": "Rockers",
     "date": "2022-10-08 09:00:00",
+    "distance": 70,
     "speed": 27
   },
   {
@@ -79,6 +84,7 @@
     "rideGroup": "Slow",
     "date": "2022-10-08 10:00:00",
     "distance": 52,
+    "destination": "Sherston",
     "route": "https://route-link"
   }
 ]
