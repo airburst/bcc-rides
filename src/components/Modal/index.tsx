@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { useRef, useEffect, Dispatch, SetStateAction } from "react";
 import styles from "./Modal.module.css";
 
 type Props = {
@@ -8,6 +8,14 @@ type Props = {
 };
 
 export const Modal: React.FC<Props> = ({ heading, setIsOpen, children }) => {
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (closeRef.current) {
+      closeRef.current.focus();
+    }
+  }, []);
+
   return (
     <>
       <div className={styles.darkBG} onClick={() => setIsOpen(false)} />
@@ -15,7 +23,7 @@ export const Modal: React.FC<Props> = ({ heading, setIsOpen, children }) => {
         <div className={styles.modal}>
           <div className={styles.modalHeader}>
             <h5 className={styles.heading}>{heading}</h5>
-            <button className={styles.closeBtn} onClick={() => setIsOpen(false)}>
+            <button ref={closeRef} className={styles.closeBtn} onClick={() => setIsOpen(false)}>
               <i className="fa-solid fa-xmark"></i>
             </button>
           </div>
