@@ -17,7 +17,7 @@ export const Card: React.FC<Props> = ({ ride, onPress }) => {
   const details = destination ? `${destination} - ${distance} km` : `${distance} km`;
 
   const pressHandler = useLongPress(() => onPress(ride), {
-    threshold: isMobile() ? 500 : 0,
+    threshold: isMobile() ? 400 : 0,
     cancelOnMovement: true,
   });
 

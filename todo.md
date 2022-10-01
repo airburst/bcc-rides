@@ -2,8 +2,6 @@
 
 ## Pages
 
-- Details Card for each type of ride
-- view of who is going
 - Join ride / unjoin ride (user can only add/remove themselves)
 - remember user name (localStorage)
 
@@ -12,6 +10,7 @@
 - Add / edit ride form
 - delete ride
 - View of rides on calendar
+- (https://github.com/moodydev/react-calendar/blob/master/src/components/Calendar.jsx)
 
 ## Engineering
 
