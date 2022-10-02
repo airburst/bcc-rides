@@ -1,5 +1,5 @@
-import "dotenv/config";
-import { connect } from "@planetscale/database";
+import 'dotenv/config';
+import { connect } from '@planetscale/database';
 
 /**
  * This is a slim version of the larger class in src/services
@@ -11,6 +11,7 @@ const config = {
   username: process.env.VITE_DATABASE_USERNAME,
   password: process.env.VITE_DATABASE_PASSWORD,
 };
+console.log('🚀 ~ file: PlanetScaleService.ts ~ line 14 ~ config', config);
 
 class PlanetScaleService {
   conn;

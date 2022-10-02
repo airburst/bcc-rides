@@ -23,6 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
+database/start_db.sh
 service.json
 .env
 .env.*

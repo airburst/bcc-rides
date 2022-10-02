@@ -4,7 +4,8 @@
 
 - User roles? Sign in to enable join/unjoin?
 - Join ride / unjoin ride (user can only add/remove themselves)
-- remember user name (localStorage)
+- remember user name (localStorage) - or require login?
+- Should ride details be a new page? /ride/{id}
 
 ## Admin/Leader
 

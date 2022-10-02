@@ -6,11 +6,16 @@ const config = {
   password: import.meta.env.VITE_DATABASE_PASSWORD,
 };
 
-const getNextRidesSql = `SELECT r.*,
-(SELECT COUNT(*) FROM riders rs WHERE rs.ride_id = r.id) AS riderCount
-FROM rides r
-WHERE date <= ?
-ORDER BY date, distance desc, ride_group`;
+const getNextRidesSql = `select r.*,
+(select count(*) from riders_to_rides rr WHERE rr.rideId = r.id) AS riderCount
+from rides r
+where date <= ?
+order by date, distance desc, rideGroup`;
+
+const getRidersForRideSql = `select r.name, r.mobile
+from riders r inner join riders_to_rides rr on r.id = rr.riderId
+where rr.rideId = ?
+order by r.createdAt`;
 
 class PlanetScaleService {
   conn;
@@ -35,7 +40,15 @@ class PlanetScaleService {
   }
 
   getRidersForRide(rideId: string) {
-    return this.fetch('select name, mobile from riders where ride_id = ?', rideId);
+    return this.fetch(getRidersForRideSql, rideId);
+  }
+
+  getRiderId(name: string) {
+    return this.fetch('select id from riders where name = ?', name);
+  }
+
+  addRiderToRide(rideId: string, name: string, mobile?: string) {
+    return this.fetch('insert into riders (name, mobile) values (?,?,?)', [rideId, name, mobile]);
   }
 }
 
