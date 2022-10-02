@@ -21,3 +21,4 @@
 - Toast library
 - Add PWA manifest
 - add long expiry to js,css,image assets on FB host
+- Add tables to support multi-tenacy

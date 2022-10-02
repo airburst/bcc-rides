@@ -4,10 +4,11 @@ import styles from "./Modal.module.css";
 type Props = {
   heading: string;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
-  children: JSX.Element,
+  content: JSX.Element,
+  actions?: JSX.Element,
 };
 
-export const Modal: React.FC<Props> = ({ heading, setIsOpen, children }) => {
+export const Modal: React.FC<Props> = ({ heading, setIsOpen, content, actions }) => {
   const closeRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -28,19 +29,26 @@ export const Modal: React.FC<Props> = ({ heading, setIsOpen, children }) => {
             </button>
           </div>
           <div className={styles.modalContent}>
-            {children}
+            {content}
           </div>
           <div className={styles.modalActions}>
             <div className={styles.actionsContainer}>
-              <button className={styles.joinBtn} onClick={() => setIsOpen(false)}>
-                <i className="fa-solid fa-plus"></i> Join
-              </button>
-              <button
-                className={styles.cancelBtn}
-                onClick={() => setIsOpen(false)}
-              >
-                Cancel
-              </button>
+              {actions
+                ? actions
+                : (
+                  <>
+                    <button className={styles.joinBtn} onClick={() => setIsOpen(false)}>
+                      <i className="fa-solid fa-plus"></i> Join
+                    </button>
+                    <button
+                      className={styles.cancelBtn}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Cancel
+                    </button>
+                  </>
+                )
+              }
             </div>
           </div>
         </div>

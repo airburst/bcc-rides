@@ -1,3 +1,9 @@
+export type User = {
+  id: string;
+  name: string;
+  mobile?: string;
+};
+
 export type DbResponse<T> = {
   data?: T[];
   error?: string;
@@ -15,6 +21,7 @@ export type Ride = {
   leader?: string;
   speed?: string;
   riderCount?: number;
+  going?: string;
 };
 
 export type Riders = {
