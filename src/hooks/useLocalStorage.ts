@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// import { User } from '../types';
 
 export function useLocalStorage<T>(key: string, initialValue: T) {
   // State to store our value
@@ -37,3 +38,5 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
   };
   return [storedValue, setValue] as const;
 }
+
+// export const useUser = () => useLocalStorage<User | null>('bcc-rides', null);

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import PlanetScaleService from './index';
-import { Ride, Riders } from '../../types';
+import { User, Ride, Riders } from '../../types';
 
 export const useGetRides = (userId: string | null, date: string) => {
   const [data, setData] = useState<Ride[] | undefined>([]);

@@ -44,8 +44,8 @@ class PlanetScaleService {
     return this.fetch(getRidersForRideSql, { rideId });
   }
 
-  getRiderId(name: string) {
-    return this.fetch('select id from riders where name = :name', { name });
+  getRiderId(email?: string) {
+    return this.fetch('select id, name from riders where email = :email', { email });
   }
 
   addRiderToRide(rideId: string, name: string, mobile?: string) {
