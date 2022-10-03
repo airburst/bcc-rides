@@ -1,15 +1,15 @@
 import { MouseEventHandler } from "react";
 import styles from "./Button.module.css";
 
-type Props = {
+export type ButtonProps = {
   variant?: string;
   text?: string;
   children?: JSX.Element;
   loading?: boolean;
-  onClick?: (e: MouseEventHandler<HTMLButtonElement>) => void;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
-export const Button: React.FC<Props> = ({ variant = "primary", text, children, loading, onClick }) => {
+export const Button: React.FC<ButtonProps> = ({ variant = "primary", text, children, loading, onClick }) => {
   const classes = `${styles.button} ${styles[variant]}`;
 
   if (loading) {
@@ -27,18 +27,5 @@ export const Button: React.FC<Props> = ({ variant = "primary", text, children, l
   );
 };
 
-export const GoingButton: React.FC<Props> = (props) => {
-  return (
-    <Button {...props} variant="going">
-      <i className="fa-solid fa-check"></i>
-    </Button>
-  );
-};
 
-export const JoinButton: React.FC<Props> = (props) => {
-  return (
-    <Button {...props} variant="join">
-      <i className="fa-solid fa-plus"></i>
-    </Button>
-  );
-};
+export * from "./JoinButton";
