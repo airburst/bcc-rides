@@ -3,8 +3,9 @@
 ## Pages
 
 - User roles? Sign in to enable join/unjoin?
-- Join ride / unjoin ride (user can only add/remove themselves)
 - remember user name (localStorage) - or require login?
+- Join ride / unjoin ride (user can only add/remove themselves)
+- Once joined, hide JoinButton from all other rides on same day
 - Should ride details be a new page? /ride/{id}
 
 ## Admin/Leader

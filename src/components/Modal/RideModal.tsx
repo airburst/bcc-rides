@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { useGetRiders } from "../../services/PlanetScaleService/hooks"
-import { useLocalStorage } from "../../hooks";
+// import { useLocalStorage } from "../../hooks";
+import { JoinButton } from "../../components";
 import { Ride, User } from "../../types";
 import { Modal } from "./index";
 import styles from "./Modal.module.css";
@@ -11,7 +12,7 @@ type Props = {
 };
 
 export const RideModal: React.FC<Props> = ({ ride, setIsOpen }) => {
-  const [user, setUser] = useLocalStorage<User | null>("bcc-user", null);
+  // const [user, setUser] = useLocalStorage<User | null>("bcc-user", null);
 
   if (!ride) {
     return null;
@@ -25,8 +26,9 @@ export const RideModal: React.FC<Props> = ({ ride, setIsOpen }) => {
     distance,
     leader,
     route,
-    speed,
-    riderCount
+    // speed,
+    riderCount,
+    going
   } = ride;
 
   const { data, error, loading } = useGetRiders(id!.toString());
@@ -77,25 +79,23 @@ export const RideModal: React.FC<Props> = ({ ride, setIsOpen }) => {
     </>
   );
 
-  const handleJoin = () => {
-    console.log("🚀 ~ RideModal ~ user", user); // FIXME:
-    if (!user) {
-      // Prompt user to set name and mobile
+  // const handleJoin = () => {
+  //   console.log("🚀 ~ RideModal ~ user", user); // FIXME:
+  //   if (!user) {
+  //     // Prompt user to set name and mobile
 
-      // Save to localStorage
-      setUser({ id: "4", name: "Mark Fairhurst" }) // FIXME:
-    }
-    // Add user to ride
+  //     // Save to localStorage
+  //     setUser({ id: "4", name: "Mark Fairhurst" }) // FIXME:
+  //   }
+  //   // Add user to ride
 
-    // Close modal
-    setIsOpen(false);
-  }
+  //   // Close modal
+  //   setIsOpen(false);
+  // }
 
   const Actions = (
     <>
-      <button className={styles.joinBtn} onClick={handleJoin}>
-        <i className="fa-solid fa-plus"></i> Join
-      </button>
+      <JoinButton going={going} />
       <button
         className={styles.cancelBtn}
         onClick={() => setIsOpen(false)}

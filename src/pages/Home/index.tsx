@@ -12,7 +12,7 @@ nextDate = "2022-10-09 23:59:59"; // FIXME:
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedRide, setSelectedRide] = useState<Ride | null>(null);
-  const [user] = useLocalStorage<User | null>("bcc-user", null);
+  const [user] = useLocalStorage<User | null>("bcc-user", null); // FIXME:
   const userId = user ? user.id : null;
   const { data, error, loading } = useGetRides(userId, nextDate);
 
