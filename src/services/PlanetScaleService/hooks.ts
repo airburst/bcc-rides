@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import PlanetScaleService from './index';
 import { Ride, Riders } from '../../types';
 
-export const useGetRides = (date: string) => {
+export const useGetRides = (userId: string | null, date: string) => {
   const [data, setData] = useState<Ride[] | undefined>([]);
   const [error, setError] = useState<string | undefined>();
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetch = async () => {
-      const { data, error } = await PlanetScaleService.getNextRides(date);
+      const { data, error } = await PlanetScaleService.getNextRides(userId, date);
       if (error) setError(error);
       // Transform ride_group to rideGroup
       setData(data as Ride[]);

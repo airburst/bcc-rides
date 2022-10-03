@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { useGetRiders } from "../../services/PlanetScaleService/hooks"
-import { Loading } from "../../components";
-import { Ride, Riders } from "../../types";
+import { useLocalStorage } from "../../hooks";
+import { Ride, User } from "../../types";
 import { Modal } from "./index";
 import styles from "./Modal.module.css";
 
@@ -11,6 +11,8 @@ type Props = {
 };
 
 export const RideModal: React.FC<Props> = ({ ride, setIsOpen }) => {
+  const [user, setUser] = useLocalStorage<User | null>("bcc-user", null);
+
   if (!ride) {
     return null;
   }
@@ -37,43 +39,73 @@ export const RideModal: React.FC<Props> = ({ ride, setIsOpen }) => {
     )
   }
 
+  const Content = (
+    <>
+      <div className={styles.contentRow}>
+        <div>{rideGroup} Group</div>
+      </div>
+      <div className={styles.contentRow}>
+        {destination && <div>{destination}</div>}
+        {distance && <div>{distance} km</div>}
+      </div>
+      {route && (
+        <div className={styles.contentRow}>
+          <div>Route</div>
+          <a href={route}>{route}</a>
+        </div>
+      )}
+      {leader && (
+        <div className={styles.contentRow}>
+          <div>Leader</div>
+          <div>{leader}</div>
+        </div>
+      )}
+      <div className={styles.going}>
+        <div>Going ({riderCount})</div>
+      </div>
+      {!loading && data?.map(({ name, mobile }) => (
+        <div key={name} className={styles.riderRow}>
+          <div>{name}</div>
+          {mobile && (
+            <div className={styles.phone}>
+              <i className="fa-solid fa-phone"></i>
+              &nbsp;&nbsp;
+              <div>{mobile}</div>
+            </div>)}
+        </div>
+      ))}
+    </>
+  );
+
+  const handleJoin = () => {
+    console.log("🚀 ~ RideModal ~ user", user); // FIXME:
+    if (!user) {
+      // Prompt user to set name and mobile
+
+      // Save to localStorage
+      setUser({ id: "4", name: "Mark Fairhurst" }) // FIXME:
+    }
+    // Add user to ride
+
+    // Close modal
+    setIsOpen(false);
+  }
+
+  const Actions = (
+    <>
+      <button className={styles.joinBtn} onClick={handleJoin}>
+        <i className="fa-solid fa-plus"></i> Join
+      </button>
+      <button
+        className={styles.cancelBtn}
+        onClick={() => setIsOpen(false)}
+      >
+        Cancel
+      </button>
+    </>
+  );
+
   return (
-    <Modal heading={title} setIsOpen={setIsOpen}>
-      <>
-        <div className={styles.contentRow}>
-          <div>{rideGroup} Group</div>
-        </div>
-        <div className={styles.contentRow}>
-          {destination && <div>{destination}</div>}
-          {distance && <div>{distance} km</div>}
-        </div>
-        {route && (
-          <div className={styles.contentRow}>
-            <div>Route</div>
-            <a href={route}>{route}</a>
-          </div>
-        )}
-        {leader && (
-          <div className={styles.contentRow}>
-            <div>Leader</div>
-            <div>{leader}</div>
-          </div>
-        )}
-        <div className={styles.going}>
-          <div>Going ({riderCount})</div>
-        </div>
-        {!loading && data?.map(({ name, mobile }) => (
-          <div key={name} className={styles.riderRow}>
-            <div>{name}</div>
-            {mobile && (
-              <div className={styles.phone}>
-                <i className="fa-solid fa-phone"></i>
-                &nbsp;&nbsp;
-                <div>{mobile}</div>
-              </div>)}
-          </div>
-        ))}
-      </>
-    </Modal>
+    <Modal heading={title} setIsOpen={setIsOpen} content={Content} actions={Actions} />
   )
 }
