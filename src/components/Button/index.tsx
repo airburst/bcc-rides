@@ -1,3 +1,4 @@
+import { MouseEventHandler } from "react";
 import styles from "./Button.module.css";
 
 type Props = {
@@ -5,7 +6,7 @@ type Props = {
   text?: string;
   children?: JSX.Element;
   loading?: boolean;
-  onClick?: () => void;
+  onClick?: (e: MouseEventHandler<HTMLButtonElement>) => void;
 };
 
 export const Button: React.FC<Props> = ({ variant = "primary", text, children, loading, onClick }) => {

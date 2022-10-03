@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, MouseEventHandler } from "react";
 import { useLongPress } from 'use-long-press';
+import { isMobile } from "../../utils";
 import { JoinButton, GoingButton } from "../../components";
 import { Ride } from "../../types";
-import { isMobile } from "../../utils";
 import styles from "./Card.module.css";
 
 type Props = {
@@ -15,7 +15,6 @@ type Props = {
  */
 export const Card: React.FC<Props> = ({ ride, onPress }) => {
   const { title, rideGroup, riderCount, destination, distance, going } = ride;
-  // const isGoing = going === "1";
   const details = destination ? `${destination} - ${distance} km` : `${distance} km`;
 
   const [joining, setJoining] = useState<boolean>(false);
@@ -24,12 +23,10 @@ export const Card: React.FC<Props> = ({ ride, onPress }) => {
   const pressHandler = useLongPress(() => onPress(ride), {
     threshold: isMobile() ? 400 : 0,
     cancelOnMovement: true,
+    filterEvents: event => event.target.tagName.toLowerCase() === "div"
   });
 
-  const fakeJoinHandler = (e: Event) => {
-    console.log("🚀 ~ file: index.tsx ~ line 38 ~ fakeJoinHandler ~ e", e)
-    e.preventDefault();
-    e.stopPropagation();
+  const fakeJoinHandler = (e: MouseEventHandler<HTMLButtonElement>) => {
     setJoining(true);
     setTimeout(() => {
       setIsGoing(true);
@@ -37,9 +34,17 @@ export const Card: React.FC<Props> = ({ ride, onPress }) => {
     }, 600);
   };
 
+  const fakeUnjoinHandler = (e: MouseEventHandler<HTMLButtonElement>) => {
+    setJoining(true);
+    setTimeout(() => {
+      setIsGoing(false);
+      setJoining(false);
+    }, 600);
+  };
+
   return (
-    <div className={styles.container} >
-      {/* <div className={styles.container} {...pressHandler()}> */}
+    // <div className={styles.container} >
+    <div className={styles.container} {...pressHandler()}>
       <div className={styles.col}>
         <div className={styles.title}>{title} ({rideGroup})</div>
         <div>{details}</div>
@@ -50,7 +55,7 @@ export const Card: React.FC<Props> = ({ ride, onPress }) => {
       </div>
       <div className={styles.alignRight}>
         {isGoing
-          ? <GoingButton loading={joining} />
+          ? <GoingButton loading={joining} onClick={fakeUnjoinHandler} />
           : <JoinButton loading={joining} onClick={fakeJoinHandler} />
         }
       </div>
